@@ -8,6 +8,28 @@
 </head>
 <body>
 
+  <nav>
+    <% if current_user %>
+      <%= current_user.email %>
+      <%= link_to "sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "register", new_user_registration_path %>
+      <%= link_to "sign in", user_session_path %>
+    <% end %> 
+  </nav>
+
+  <nav>
+    <%= link_to "articles", articles_path %>
+    <%= link_to "authors", authors_path %>
+    <%= link_to "tags", tags_path %>
+  </nav>
+
+  <% flash.each do |name, msg| %>
+    <div class="<%= name %>">
+      <%= msg %>
+    </div>
+  <% end %>
+
 <%= yield %>
 
 </body>

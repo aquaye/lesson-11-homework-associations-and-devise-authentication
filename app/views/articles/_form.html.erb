@@ -1,0 +1,13 @@
+<%= form_for @article do |field| %>
+
+<%= field.text_field :title, placeholder: "Title" %>
+
+<%= field.text_field :body, placeholder: "Body" %>
+
+<%= collection_select(:article, :author_id, Author.all, :id, :name) %>
+
+<%= collection_check_boxes(:article, :tag_ids, Tag.all, :id, :name) %>
+
+<%= field.submit %>
+
+<% end %>
